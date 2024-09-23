@@ -13,9 +13,8 @@ spring:
       username: root
       password: 123456
 
-mybatis:
+mybatis-plus:
   type-aliases-package: com.yunqi.auth.model.entity
-  mapper-locations: classpath:mapper/*Mapper.xml
 
 dubbo:
   scan:
@@ -25,3 +24,4 @@ dubbo:
     port: -1
   registry:
     address: nacos://localhost:8848
+

@@ -1,23 +1,36 @@
 package com.yunqi.auth.controller;
 
-import com.yunqi.auth.mapper.UserMapper;
 import com.yunqi.auth.model.entity.User;
+import com.yunqi.auth.service.IUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/auth/user")
 @AllArgsConstructor
 public class UserController {
 
-    private final UserMapper userMapper;
+    private final IUserService userService;
 
     @GetMapping
     public User getOne(Long id) {
-        return userMapper.getOne(id);
+        return userService.getById(id);
+    }
+
+    @GetMapping("/testid")
+    public void getAll() {
+        User user = new User();
+        user.setNickname("test1");
+        user.setPassword("123456");
+        user.setCreateAt(LocalDateTime.now());
+        user.setCreateBy(1L);
+        user.setUpdateAt(LocalDateTime.now());
+        user.setUpdateBy(1L);
+        userService.save(user);
     }
 
 }
