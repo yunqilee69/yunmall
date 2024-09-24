@@ -13,7 +13,7 @@ public class MybatisPlusGlobalConfig {
      */
     @Bean
     public IdentifierGenerator identifierGenerator() {
-        return new SnowflakeIdGenerator();
+        return new SnowflakeIdGenerator(1L, 1L);
     }
 
 }

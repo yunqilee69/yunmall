@@ -2,6 +2,7 @@ package com.yunqi.auth.controller;
 
 import com.yunqi.auth.model.entity.User;
 import com.yunqi.auth.service.IUserService;
+import com.yunqi.common.util.SnowflakeIdGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,6 @@ import java.time.LocalDateTime;
 public class UserController {
 
     private final IUserService userService;
-
-    @GetMapping
-    public User getOne(Long id) {
-        return userService.getById(id);
-    }
 
     @GetMapping("/testid")
     public void getAll() {
