@@ -11,6 +11,7 @@
     <modules>
         <module>yun-common</module>
         <module>yun-auth</module>
+        <module>yun-gateway</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -23,7 +24,6 @@
         <spring.cloud.version>2021.0.5</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.0.5.0</spring.cloud.alibaba.version>
         <dubbo.version>3.2.0</dubbo.version>
-        <nacos.version>2.2.0</nacos.version>
         <mysql.version>8.0.33</mysql.version>
         <mybatis.plus.version>3.5.8</mybatis.plus.version>
         <druid.version>1.2.20</druid.version>
@@ -72,12 +72,6 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo.version}</version>
-            </dependency>
-            <!-- nacos -->
-            <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-client</artifactId>
-                <version>${nacos.version}</version>
             </dependency>
             <!-- mysql -->
             <dependency>

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.yunqi")
+@ComponentScan("com.yunqi") // 扫描Bean路径
 public class YunAuthApplication {
 
     public static void main(String[] args) {
