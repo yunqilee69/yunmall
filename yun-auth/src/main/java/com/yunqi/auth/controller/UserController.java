@@ -4,6 +4,9 @@ import com.yunqi.auth.model.entity.User;
 import com.yunqi.auth.service.IUserService;
 import com.yunqi.common.util.SnowflakeIdGenerator;
 import lombok.AllArgsConstructor;
+import org.redisson.api.RedissonClient;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +20,8 @@ public class UserController {
 
     private final IUserService userService;
 
+    private final RedissonClient redissonClient;
+
     @GetMapping("/testid")
     public void getAll() {
         User user = new User();
@@ -26,7 +31,8 @@ public class UserController {
         user.setCreateBy(1L);
         user.setUpdateAt(LocalDateTime.now());
         user.setUpdateBy(1L);
-        userService.save(user);
+        //userService.save(user);
+        redissonClient.getBucket("user_id").set(123456);
     }
 
 }

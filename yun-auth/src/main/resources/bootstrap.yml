@@ -1,14 +1,15 @@
 server:
   # 随机端口，不对外暴露，由nacos进行组件间的通讯
-  port: 0
+  port: 8080
 spring:
   application:
     name: yun-auth
   profiles:
-    active: dev
+    # 生产环境指的就是腾讯云环境
+    active: prod
   cloud:
     nacos:
-      # 只需要配置一次地址即可
+      # 只需要配置一次nacos地址即可
       server-addr: 43.142.121.125:8848/nacos
       # 服务发现
       discovery:
@@ -19,10 +20,10 @@ spring:
         file-extension: yml
         prefix: yun-auth
         # 这是额外的配置文件
-#        ext-config[0]:
-#          data-id: yun-auth.yml  # 额外的配置文件的Data ID
-#          group: DEFAULT_GROUP  # 额外配置文件的组
-#          refresh: true  # 是否动态刷新此配置文件
+        #ext-config[0]:
+          #data-id: redisson-config.yml  # redisson配置
+          #group: DEFAULT_GROUP  # 额外配置文件的组
+          #refresh: true  # 是否动态刷新此配置文件
 
 dubbo:
   scan:
