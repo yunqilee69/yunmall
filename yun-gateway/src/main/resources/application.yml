@@ -16,4 +16,4 @@ spring:
         - id: auth # 路由规则id，唯一
           uri: lb://yun-auth # 目标服务，lb为负载均衡
           predicates: # 路由规则
-            - Path=/auth/** # 以亲贵路径作为判断规则
+            - Path=/auth/** # 以路径作为判断规则
