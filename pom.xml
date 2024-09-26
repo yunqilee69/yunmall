@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yunqi</groupId>
     <artifactId>yunmall</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>yunmall</name>
     <description>yunmall</description>
 
@@ -37,12 +37,12 @@
             <dependency>
                 <groupId>com.yunqi</groupId>
                 <artifactId>yun-common</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.yunqi</groupId>
                 <artifactId>yun-auth</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <!-- Spring Boot依赖版本管理-->
             <dependency>
@@ -110,7 +110,11 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

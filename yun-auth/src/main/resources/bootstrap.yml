@@ -1,6 +1,6 @@
 server:
   # 随机端口，不对外暴露，由nacos进行组件间的通讯
-  port: 8080
+  port: 0
 spring:
   application:
     name: yun-auth

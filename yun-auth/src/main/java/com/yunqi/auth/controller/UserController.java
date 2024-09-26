@@ -2,11 +2,8 @@ package com.yunqi.auth.controller;
 
 import com.yunqi.auth.model.entity.User;
 import com.yunqi.auth.service.IUserService;
-import com.yunqi.common.util.SnowflakeIdGenerator;
 import lombok.AllArgsConstructor;
 import org.redisson.api.RedissonClient;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
