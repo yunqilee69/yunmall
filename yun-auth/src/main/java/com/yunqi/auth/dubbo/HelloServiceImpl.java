@@ -1,7 +1,6 @@
-package com.yunqi.auth.service.impl;
+package com.yunqi.auth.dubbo;
 import com.yunqi.common.service.HelloService;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.springframework.stereotype.Component;
 
 @DubboService(group = "dubbo_group")
 public class HelloServiceImpl implements HelloService {

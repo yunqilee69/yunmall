@@ -27,9 +27,7 @@ spring:
 
 dubbo:
   application:
-    name: yun-order-dubbo
-  scan:
-    base-packages: com.yunqi
+    name: ${spring.application.name}-dubbo
   protocol:
     name: dubbo
     port: -1
