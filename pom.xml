@@ -12,6 +12,7 @@
         <module>yun-common</module>
         <module>yun-auth</module>
         <module>yun-gateway</module>
+        <module>yun-order</module>
     </modules>
 
     <packaging>pom</packaging>
