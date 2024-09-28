@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yunqi</groupId>
     <artifactId>yunmall</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>yunmall</name>
     <description>yunmall</description>
 
@@ -12,6 +12,7 @@
         <module>yun-common</module>
         <module>yun-auth</module>
         <module>yun-gateway</module>
+        <module>yun-order</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -29,6 +30,7 @@
         <druid.version>1.2.20</druid.version>
         <fastjson.version>2.0.43</fastjson.version>
         <lombok.version>1.18.24</lombok.version>
+        <redisson.version>3.17.7</redisson.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -36,12 +38,12 @@
             <dependency>
                 <groupId>com.yunqi</groupId>
                 <artifactId>yun-common</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.yunqi</groupId>
                 <artifactId>yun-auth</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <!-- Spring Boot依赖版本管理-->
             <dependency>
@@ -75,8 +77,8 @@
             </dependency>
             <!-- mysql -->
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
             <!-- mybatis-plus -->
@@ -102,6 +104,17 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <!-- redisson分布式锁及redis-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

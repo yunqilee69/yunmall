@@ -1,17 +1,17 @@
-spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yunmall
-    username: root
-    password: 123456
-    druid:
-      web-stat-filter: # 监控web
-        enabled: true
-      stat-view-servlet: # 后台页面 http://ip:port/druid/login.html
-        enabled: true
-        login-username: druid
-        login-password: druid
-
-mybatis-plus:
-  type-aliases-package: com.yunqi.auth.model.entity
+#spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/yunmall
+#    username: root
+#    password: 123456
+#    druid:
+#      web-stat-filter: # 监控web
+#        enabled: true
+#      stat-view-servlet: # 后台页面 http://ip:port/druid/login.html
+#        enabled: true
+#        login-username: druid
+#        login-password: druid
+#
+#mybatis-plus:
+#  type-aliases-package: com.yunqi.auth.model.entity

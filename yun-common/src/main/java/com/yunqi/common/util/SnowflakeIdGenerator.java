@@ -40,8 +40,8 @@ public class SnowflakeIdGenerator implements IdentifierGenerator {
     private long sequence = 0L;
 
     public SnowflakeIdGenerator(long datacenterId, long workerId) {
-        if (workerId > maxWorkerId || workerId < 0) {
-            throw new IllegalArgumentException(String.format("datacenterId Id can't be greater than %d or less than 0", maxDatacenterId));
+        if (datacenterId > maxDatacenterId || workerId < 0) {
+            throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDatacenterId));
         }
         this.datacenterId = datacenterId;
         if (workerId > maxWorkerId || workerId < 0) {

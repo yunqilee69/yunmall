@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>yun-auth</artifactId>
-    <version>1.0.0</version>
-    <name>yun-auth</name>
-    <description>yun-auth</description>
-
     <parent>
         <groupId>com.yunqi</groupId>
         <artifactId>yunmall</artifactId>
         <version>1.0.0</version>
     </parent>
+
+    <artifactId>yun-order</artifactId>
+    <version>1.0.0</version>
+    <name>yun-order</name>
+    <description>yun-order</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -19,6 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.7.6</spring-boot.version>
     </properties>
+
     <dependencies>
         <!-- yun-common -->
         <dependency>
@@ -34,21 +35,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <!--mysql-->
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-        </dependency>
-        <!-- mybatis-plus -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
         <!-- dubbo-->
         <dependency>
@@ -94,7 +80,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.yunqi.auth.YunAuthApplication</mainClass>
+                    <mainClass>com.yunqi.order.YunOrderApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>
