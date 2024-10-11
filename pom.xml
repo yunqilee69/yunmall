@@ -26,11 +26,13 @@
         <spring.cloud.alibaba.version>2021.0.5.0</spring.cloud.alibaba.version>
         <dubbo.version>3.2.0</dubbo.version>
         <mysql.version>8.0.33</mysql.version>
-        <mybatis.plus.version>3.5.8</mybatis.plus.version>
+        <mybatis.plus.version>3.5.7</mybatis.plus.version>
         <druid.version>1.2.20</druid.version>
         <fastjson.version>2.0.43</fastjson.version>
         <lombok.version>1.18.24</lombok.version>
         <redisson.version>3.17.7</redisson.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -115,6 +117,22 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <!-- MapStruct，下面三个都需要 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

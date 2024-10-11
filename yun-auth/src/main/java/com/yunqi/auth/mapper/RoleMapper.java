@@ -1,12 +1,13 @@
 package com.yunqi.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.yunqi.auth.model.entity.User;
+import com.yunqi.auth.model.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 用户mapper
+ * 角色mapper
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
+public interface RoleMapper extends BaseMapper<Role> {
+
 }

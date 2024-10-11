@@ -23,6 +23,12 @@
         <dependency>
             <groupId>com.yunqi</groupId>
             <artifactId>yun-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- nacos 服务发现 -->
         <dependency>
