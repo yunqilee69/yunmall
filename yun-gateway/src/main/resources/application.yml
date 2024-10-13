@@ -1,16 +1,9 @@
-server:
-  # 需要对外暴露，设置指定端口
-  port: 8080
 spring:
-  application:
-    name: yun-gateway
+  redis:
+    host: 43.142.121.125
+    port: 6379
+    database: 0
   cloud:
-    nacos:
-      # 只需要配置一次地址即可
-      server-addr: 43.142.121.125:8848
-      # 服务发现
-      discovery:
-        group: DEFAULT_GROUP
     gateway:
       routes:
         - id: auth # 路由规则id，唯一
@@ -25,5 +18,3 @@ spring:
           uri: lb://yun-auth
           predicates:
             - Path=/login
-          filters:
-            - PrefixPath=/auth

@@ -1,4 +1,4 @@
-# 用户表，包含管理员和普通用户
+# 用户表，包含管理员
 drop table if exists tb_sys_user;
 create table tb_sys_user
 (
