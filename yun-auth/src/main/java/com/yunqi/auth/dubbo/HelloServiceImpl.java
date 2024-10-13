@@ -1,5 +1,5 @@
 package com.yunqi.auth.dubbo;
-import com.yunqi.common.service.HelloService;
+import com.yunqi.common.dubbo.service.HelloService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 @DubboService(group = "dubbo_group")

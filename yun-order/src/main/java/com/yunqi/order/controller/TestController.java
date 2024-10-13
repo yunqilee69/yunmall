@@ -1,6 +1,6 @@
 package com.yunqi.order.controller;
 
-import com.yunqi.common.service.HelloService;
+import com.yunqi.common.dubbo.service.HelloService;
 import lombok.AllArgsConstructor;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;

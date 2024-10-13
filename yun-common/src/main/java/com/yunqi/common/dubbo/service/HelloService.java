@@ -1,4 +1,4 @@
-package com.yunqi.common.service;
+package com.yunqi.common.dubbo.service;
 
 public interface HelloService {
 

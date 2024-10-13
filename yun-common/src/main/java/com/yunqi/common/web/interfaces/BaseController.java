@@ -1,19 +1,13 @@
 package com.yunqi.common.web.interfaces;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yunqi.common.web.entity.RequestPage;
 import com.yunqi.common.web.entity.ResponsePage;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
  * 公用业务控制器，都需要实现增删改查操作，以及分页查询操作
+ * @author
  * TODO 还未完成
  */
 public interface BaseController<T> {

@@ -21,3 +21,9 @@ spring:
           uri: lb://yun-order
           predicates:
             - Path=/order/**
+        - id: login
+          uri: lb://yun-auth
+          predicates:
+            - Path=/login
+          filters:
+            - PrefixPath=/auth

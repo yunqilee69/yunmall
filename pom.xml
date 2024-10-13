@@ -33,6 +33,7 @@
         <redisson.version>3.17.7</redisson.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
+        <jjwt-api.version>0.12.6</jjwt-api.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -134,6 +135,13 @@
                 <artifactId>lombok-mapstruct-binding</artifactId>
                 <version>${lombok-mapstruct.version}</version>
             </dependency>
+            <!-- jjwt-api -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwet-api.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

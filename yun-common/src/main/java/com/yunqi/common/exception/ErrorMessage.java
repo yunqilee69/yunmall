@@ -1,6 +1,7 @@
 package com.yunqi.common.exception;
 
 import com.yunqi.common.constants.ResponseCode;
+import lombok.Getter;
 
 /**
  * 错误信息接口
@@ -8,26 +9,17 @@ import com.yunqi.common.constants.ResponseCode;
  */
 public interface ErrorMessage {
 
-    // 默认为基础错误编码
-    int code = ResponseCode.ERROR_CODE;
 
-    // 默认错误信息
-    String message = "服务器出错，请联系管理员！";
-
-    /**
+    /*
      * 错误编码，不同的业务对应的编码不同，以方便排查错误
      * @return
      */
-    default int getCode() {
-        return code;
-    }
+    int getCode();
 
     /**
      * 获取错误信息，是必填的
      * @return
      */
-    default String getMessage() {
-        return message;
-    }
+    String getMessage();
 
 }
