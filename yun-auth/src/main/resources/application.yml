@@ -14,4 +14,4 @@
 #        login-password: druid
 #
 #mybatis-plus:
-#  type-aliases-package: com.yunqi.auth.model.entity
+#  type-aliases-package: icu.yunke.auth.model.entity

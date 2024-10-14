@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>icu.yunke</groupId>
+        <artifactId>yunmall</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>yun-framework</artifactId>
+    <version>1.0.0</version>
+    <name>yun-framework</name>
+    <description>yun-framework</description>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>yun-common</module>
+        <module>yun-framework-mybatis</module>
+        <module>yun-framework-oss</module>
+        <module>yun-framework-redis</module>
+        <module>yun-framework-security</module>
+        <module>yun-framework-web</module>
+    </modules>
+
+    <properties>
+        <module.version>1.0.0</module.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-common</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-mybatis</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-oss</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-redis</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-security</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

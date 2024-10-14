@@ -8,7 +8,7 @@
     <description>yun-auth</description>
 
     <parent>
-        <groupId>com.yunqi</groupId>
+        <groupId>icu.yunke</groupId>
         <artifactId>yunmall</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -20,10 +20,27 @@
         <spring-boot.version>2.7.6</spring-boot.version>
     </properties>
     <dependencies>
-        <!-- yun-common -->
+        <!-- 基础模块 -->
         <dependency>
-            <groupId>com.yunqi</groupId>
+            <groupId>icu.yunke</groupId>
             <artifactId>yun-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-web</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-redis</artifactId>
         </dependency>
         <!-- spring boot -->
         <dependency>
@@ -70,11 +87,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-        <!-- redisson -->
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-boot-starter</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -94,7 +106,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.yunqi.auth.YunAuthApplication</mainClass>
+                    <mainClass>icu.yunke.auth.YunAuthApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>

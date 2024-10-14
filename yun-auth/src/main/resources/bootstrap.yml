@@ -29,7 +29,7 @@ dubbo:
   application:
     name: ${spring.application.name}-dubbo
   scan:
-    base-packages: com.yunqi.auth.dubbo
+    base-packages: icu.yunke.auth.dubbo
   protocol:
     name: dubbo
     port: -1

@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>icu.yunke</groupId>
+        <artifactId>yunmall</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>yun-gateway</artifactId>
     <version>1.0.0</version>
     <name>yun-gateway</name>
     <description>yun-gateway</description>
 
-    <parent>
-        <groupId>com.yunqi</groupId>
-        <artifactId>yunmall</artifactId>
-        <version>1.0.0</version>
-    </parent>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
     <dependencies>
         <!-- yun-common -->
         <dependency>
-            <groupId>com.yunqi</groupId>
+            <groupId>icu.yunke</groupId>
             <artifactId>yun-common</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-redis</artifactId>
         </dependency>
         <!-- nacos 服务发现 -->
         <dependency>
@@ -54,11 +48,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-        <!-- redisson -->
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
