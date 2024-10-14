@@ -31,5 +31,10 @@
             <artifactId>mybatis-plus</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- Spring-doc -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
     </dependencies>
 </project>

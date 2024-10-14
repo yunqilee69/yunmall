@@ -5,6 +5,7 @@ import icu.yunke.auth.model.response.LoginResponse;
 import icu.yunke.framework.common.exception.auth.AuthError;
 import icu.yunke.framework.common.exception.auth.AuthException;
 import icu.yunke.framework.web.entity.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 权限控制器，用于登录、登出、用户权限获取
  */
+@Tag(name = "管理后台 - 认证")
 @RestController
 @RequestMapping
 @AllArgsConstructor

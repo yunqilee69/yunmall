@@ -35,6 +35,8 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
         <jjwt.version>0.12.6</jjwt.version>
+        <knife4j.version>4.5.0</knife4j.version>
+        <springdoc.version>1.7.0</springdoc.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -184,7 +186,18 @@
                 <version>${jjwt.version}</version>
                 <scope>runtime</scope>
             </dependency>
-
+            <!-- knife4j接口文档 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 -->
+                <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <!-- spring-doc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
