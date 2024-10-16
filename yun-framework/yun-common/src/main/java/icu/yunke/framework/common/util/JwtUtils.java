@@ -9,6 +9,7 @@ import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtils {
@@ -29,6 +30,7 @@ public class JwtUtils {
     // 生成JWT令牌
     public static String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
+                .header().add("typ", "JWT").and() // 设置header
                 .subject(subject)
                 .claims(claims)
                 .issuedAt(new Date(System.currentTimeMillis()))
@@ -38,16 +40,46 @@ public class JwtUtils {
                 .compact();
     }
 
-    // 验证JWT令牌
-    public static boolean validateToken(String token) {
-        try {
-            Claims claims = parseToken(token);
-            // 校验是否过期
-            Date expiration = claims.getExpiration();
-            return true;
-        } catch (Exception e) {
-            return false;
+    // 生成JWT刷新令牌
+    public static String generateRefreshToken(Map<String, Object> claims) {
+        return Jwts.builder()
+                .header().add("typ", "JWT").and() // 设置header
+                .subject(subject)
+                .claims(claims)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION_TIME))
+                //.signWith(KEY, SignatureAlgorithm.HS256)
+                .signWith(KEY)
+                .compact();
+    }
+
+    /**
+     * 获取token和过期时间以及刷新token
+     * @param claims
+     * @return
+     */
+    public static Map<String, Object> generateTokenAndRefreshToken(Map<String, Object> claims) {
+        String token = generateToken(claims);
+        String refreshToken = generateRefreshToken(claims);
+        Map<String, Object> result = new HashMap<>(3);
+        result.put("token", token);
+        result.put("refreshToken", refreshToken);
+        result.put("expire", String.valueOf(System.currentTimeMillis() + EXPIRATION_TIME));
+        return result;
+    }
+
+
+    /**
+     * 根据刷新token获取新的token
+     * @param refreshToken
+     * @return
+     */
+    public static Map<String, Object> generateRefreshToken(String refreshToken) {
+        if (isTokenExpired(refreshToken)) {
+            // 如果刷新令牌也过期，则需要用户重新登录
+            throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
         }
+        return generateTokenAndRefreshToken(parseToken(refreshToken));
     }
 
     // 解析JWT令牌
@@ -68,21 +100,17 @@ public class JwtUtils {
         Claims claims = parseToken(token);
         Date expiration = claims.getExpiration();
         // 判断是否过期
-        return expiration.after(new Date());
+        return expiration.before(new Date());
     }
 
     /**
-     * 刷新JWT令牌
+     * 获取过期时间戳
      * @param token
      * @return
      */
-    public static String refreshToken(String token) {
-        if (isTokenExpired(token)) {
-            // 如果刷新令牌也过期，则需要用户重新登录
-            throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
-        }
-        Claims oldClaims = parseToken(token);
-        return generateToken(oldClaims);
+    public static Long getExpiration(String token) {
+        Claims claims = parseToken(token);
+        return claims.getExpiration().getTime();
     }
 
     /**
@@ -92,7 +120,7 @@ public class JwtUtils {
      */
     public static Long getUserid(String token) {
         if (isTokenExpired(token)) {
-            // 如果刷新令牌也过期，则需要用户重新登录
+            // 如果令牌过期，则需要用户重新登录
             throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
         }
         Claims claims = parseToken(token);

@@ -14,3 +14,8 @@
 - yun-common 公共包，通用的实体类、工具类等放在这里
 - yun-auth 认证中心，用于登录、注册、菜单权限获取
 - yun-gateway 网关
+
+## 接口文档
+地址:http://网关ip:网关端口/doc.html
+
+默认:http://localhost:8080/doc.html
