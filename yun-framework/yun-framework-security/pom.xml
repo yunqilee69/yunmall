@@ -20,6 +20,16 @@
             <groupId>icu.yunke</groupId>
             <artifactId>yun-common</artifactId>
         </dependency>
+        <!-- yun-framework-web -->
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-web</artifactId>
+        </dependency>
+        <!-- yun-framework-redis -->
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-redis</artifactId>
+        </dependency>
         <!-- spring security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

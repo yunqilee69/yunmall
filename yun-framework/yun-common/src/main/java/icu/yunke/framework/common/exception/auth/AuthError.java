@@ -5,7 +5,9 @@ import icu.yunke.framework.common.exception.ErrorMessage;
 
 public enum AuthError implements ErrorMessage {
 
-    LOGIN_FAILED(1001, "登录失败");
+    LOGIN_FAILED(1001, "登录失败"),
+
+    USERNAME_IS_EMPTY(1002, "用户名为空");
 
     AuthError(int code, String message) {
         this.code = code;

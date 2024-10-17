@@ -76,6 +76,11 @@
                 <artifactId>yun-framework-security</artifactId>
                 <version>${module.version}</version>
             </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-web</artifactId>
+                <version>${module.version}</version>
+            </dependency>
             <!-- Spring Boot依赖版本管理-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

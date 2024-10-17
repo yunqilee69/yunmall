@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="icu.yunke.auth.mapper.AuthMapper">
+
+    <resultMap id="AuthenticationUserDTO" type="icu.yunke.framework.security.dto.AuthenticationUserDTO">
+        <result column="userId" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="is_enable" property="enabled"/>
+        <collection property="perms" ofType="string">
+            <result column="perm"/>
+        </collection>
+        <collection property="roles" ofType="string">
+            <result column="role"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAuthenticationUserDTOByUserId" resultMap="AuthenticationUserDTO">
+        select
+            t1.id userId,
+            t1.username,
+            t1.is_enable,
+            t1.password,
+            t3.auth_key role,
+            t5.auth_key perm
+        from tb_sys_user t1
+                 left join tb_sys_user_role t2 on t1.id = t2.user_id
+                 left join tb_sys_role t3 on t3.id = t2.role_id
+                 left join tb_sys_role_menu t4 on t4.role_id = t3.id
+                 left join tb_sys_menu t5 on t5.id = t4.menu_id
+        where
+            t1.id = #{userId}
+    </select>
+
+    <select id="getAuthenticationUserDTOByUsername" resultMap="AuthenticationUserDTO">
+        select
+            t1.id userId,
+            t1.username,
+            t1.is_enable,
+            t1.password,
+            t3.auth_key role,
+            t5.auth_key perm
+        from tb_sys_user t1
+                 left join tb_sys_user_role t2 on t1.id = t2.user_id
+                 left join tb_sys_role t3 on t3.id = t2.role_id
+                 left join tb_sys_role_menu t4 on t4.role_id = t3.id
+                 left join tb_sys_menu t5 on t5.id = t4.menu_id
+        where
+            t1.username = #{username}
+    </select>
+
+
+</mapper>

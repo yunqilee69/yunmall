@@ -1,9 +1,11 @@
 package icu.yunke.framework.common.util;
 
+import icu.yunke.framework.common.constants.JwtConstant;
 import icu.yunke.framework.common.constants.UserConstant;
 import icu.yunke.framework.common.exception.BaseException;
 import icu.yunke.framework.common.exception.base.JwtError;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
@@ -58,13 +60,13 @@ public class JwtUtils {
      * @param claims
      * @return
      */
-    public static Map<String, Object> generateTokenAndRefreshToken(Map<String, Object> claims) {
+    public static Map<String, String> generateTokenAndRefreshToken(Map<String, Object> claims) {
         String token = generateToken(claims);
         String refreshToken = generateRefreshToken(claims);
-        Map<String, Object> result = new HashMap<>(3);
-        result.put("token", token);
-        result.put("refreshToken", refreshToken);
-        result.put("expire", String.valueOf(System.currentTimeMillis() + EXPIRATION_TIME));
+        Map<String, String> result = new HashMap<>(3);
+        result.put(JwtConstant.TOKEN, token);
+        result.put(JwtConstant.REFRESH_TOKEN, refreshToken);
+        result.put(JwtConstant.EXPIRES_IN, String.valueOf(System.currentTimeMillis() + EXPIRATION_TIME));
         return result;
     }
 
@@ -74,7 +76,7 @@ public class JwtUtils {
      * @param refreshToken
      * @return
      */
-    public static Map<String, Object> generateRefreshToken(String refreshToken) {
+    public static Map<String, String> generateTokenAndRefreshToken(String refreshToken) {
         if (isTokenExpired(refreshToken)) {
             // 如果刷新令牌也过期，则需要用户重新登录
             throw new BaseException(JwtError.TOKEN_IS_EXPIRED);

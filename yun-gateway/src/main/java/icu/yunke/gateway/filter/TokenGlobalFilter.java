@@ -1,6 +1,8 @@
 package icu.yunke.gateway.filter;
 
 
+import icu.yunke.framework.common.constants.UserConstant;
+import icu.yunke.framework.common.exception.BaseException;
 import icu.yunke.framework.common.exception.base.JwtError;
 import icu.yunke.framework.common.model.dto.UserDTO;
 import icu.yunke.framework.common.util.JwtUtils;
@@ -39,29 +41,24 @@ public class TokenGlobalFilter implements GlobalFilter, Ordered {
         if (token == null) {
             //  TODO 通过由微服务自己判断是否通过
             return chain.filter(exchange);
-            //return FilterUtil.failure(exchange.getResponse(), "token为空");
         } else {
             // 去除开头的"Bearer "
             token = token.replace("Bearer ", "");
         }
 
+       //将token转成id并获取对象
+        Long userId = null;
         try {
-            // TODO 判断userid是否在redis中
-           //将token转成id并获取对象
-            Long userid = JwtUtils.getUserid(token);
-            UserDTO userDTO = (UserDTO) redissonClient.getBucket(userid.toString()).get();
-            //将userDTO放入exchange中
-            //exchange.getAttributes().put("userDTO", userDTO);
-            //如果不能成功获取对象则说明该token非法
-            if (null == userDTO) {
-                return FilterUtil.failure(exchange.getResponse(), JwtError.TOKEN_IS_ILLEGAL.getMessage());
-            }
-            // TODO 获取到了token及用户信息，进行流量染色，设置userid等信息到请求头
-        } catch (Exception e) {
-            return FilterUtil.failure(exchange.getResponse(), JwtError.TOKEN_IS_ILLEGAL.getMessage());
+            userId = JwtUtils.getUserid(token);
+        } catch (BaseException e) {
+            // 解析失败
+            //  TODO 通过由微服务自己判断是否通过
+            return chain.filter(exchange);
         }
 
-        return chain.filter(exchange);
+        // 设置userid到请求头
+        request = exchange.getRequest().mutate().header(UserConstant.USER_ID, String.valueOf(userId)).build();
+        return chain.filter(exchange.mutate().request(request).build());
     }
 
     @Override
