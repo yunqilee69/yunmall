@@ -22,28 +22,28 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserController implements BaseController<UserDTO> {
 
+    // TODO 返回类都需要重新新建并设置MapStruct
+
     private final UserService userService;
 
     private final RedissonClient redissonClient;
-
-    private final UserConvert userConvert;
 
     @Override
     public ResponsePage<UserDTO> findPage(UserDTO userDTO) {
         Page<User> page = getPage(User.class);
         page = userService.page(page);
-        List<UserDTO> records = page.getRecords().stream().map(userConvert::userToUserDTO).collect(Collectors.toList());
+        List<UserDTO> records = page.getRecords().stream().map(UserConvert.INSTANCE::toUserDTO).collect(Collectors.toList());
         return convert2ResponsePage(page, records);
     }
 
     @Override
     public void create(@RequestBody UserDTO userDTO) {
-        userService.save(userConvert.userDTOToUser(userDTO));
+        userService.save(UserConvert.INSTANCE.toUser(userDTO));
     }
 
     @Override
     public void update(@RequestBody UserDTO userDTO) {
-        userService.updateById(userConvert.userDTOToUser(userDTO));
+        userService.updateById(UserConvert.INSTANCE.toUser(userDTO));
     }
 
     @Override
@@ -53,6 +53,6 @@ public class UserController implements BaseController<UserDTO> {
 
     @Override
     public UserDTO findById(@PathVariable Long id) {
-        return userConvert.userToUserDTO(userService.getById(id));
+        return UserConvert.INSTANCE.toUserDTO(userService.getById(id));
     }
 }

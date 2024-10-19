@@ -10,19 +10,19 @@ import java.util.List;
 @Data
 public class UserDTO {
 
+    // 主键
     private Long id;
 
+    // 用户名
     private String username;
 
+    // 密码
     private String password;
 
-    // 是否为管理员
-    private Boolean admin;
-
-    // 角色
+    // 角色key
     private List<String> roles;
 
     // 权限key
-    private List<String>  permissions;
+    private List<String>  perms;
 
 }

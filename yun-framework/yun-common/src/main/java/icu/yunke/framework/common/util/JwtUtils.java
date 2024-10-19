@@ -5,6 +5,7 @@ import icu.yunke.framework.common.constants.UserConstant;
 import icu.yunke.framework.common.exception.BaseException;
 import icu.yunke.framework.common.exception.base.JwtError;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -77,42 +78,21 @@ public class JwtUtils {
      * @return
      */
     public static Map<String, String> generateTokenAndRefreshToken(String refreshToken) {
-        if (isTokenExpired(refreshToken)) {
-            // 如果刷新令牌也过期，则需要用户重新登录
-            throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
-        }
         return generateTokenAndRefreshToken(parseToken(refreshToken));
     }
 
     // 解析JWT令牌
     public static Claims parseToken(String token) {
-        return Jwts.parser()
-                .verifyWith(KEY)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-    }
-
-    /**
-     * 检查JWT令牌是否过期，过期-true
-     * @param token
-     * @return
-     */
-    public static boolean isTokenExpired(String token) {
-        Claims claims = parseToken(token);
-        Date expiration = claims.getExpiration();
-        // 判断是否过期
-        return expiration.before(new Date());
-    }
-
-    /**
-     * 获取过期时间戳
-     * @param token
-     * @return
-     */
-    public static Long getExpiration(String token) {
-        Claims claims = parseToken(token);
-        return claims.getExpiration().getTime();
+        try {
+            return Jwts.parser()
+                    .verifyWith(KEY)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (ExpiredJwtException e) {
+            // 过期了进行解析，会直接进行报错
+            throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
+        }
     }
 
     /**
@@ -121,10 +101,6 @@ public class JwtUtils {
      * @return
      */
     public static Long getUserid(String token) {
-        if (isTokenExpired(token)) {
-            // 如果令牌过期，则需要用户重新登录
-            throw new BaseException(JwtError.TOKEN_IS_EXPIRED);
-        }
         Claims claims = parseToken(token);
         return claims.get(UserConstant.USER_ID, Long.class);
     }

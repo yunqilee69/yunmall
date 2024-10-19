@@ -1,6 +1,9 @@
 package icu.yunke.framework.security.filter;
 
 import icu.yunke.framework.common.constants.UserConstant;
+import icu.yunke.framework.common.context.UserContextHolder;
+import icu.yunke.framework.common.model.dto.UserDTO;
+import icu.yunke.framework.redis.constant.UserRedisConstant;
 import org.redisson.api.RedissonClient;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,10 +31,15 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String userId = request.getHeader(UserConstant.USER_ID);
         if (userId == null) {
-            // 校验不通过，返回校验失败
+            // TODO 校验不通过，返回校验失败
         }
 
-        String user = (String) redissonClient.getBucket(UserConstant.USER_ID + ":" + userId).get();
+        UserDTO userDTO = (UserDTO) redissonClient.getBucket(UserRedisConstant.USER_KEY + userId).get();
+        // 设置当前线程的用户信息
+        UserContextHolder.set(userDTO);
         filterChain.doFilter(request, response);
+
+        // 结束时，需要清楚当前线程的用户信息，防止出现OOM
+        UserContextHolder.clear();
     }
 }

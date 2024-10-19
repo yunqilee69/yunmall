@@ -10,10 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @ComponentScan("icu.yunke") // 扫描Bean路径
 @EnableDubbo
-public class YunOrderApplication {
+public class OrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(YunOrderApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
 }

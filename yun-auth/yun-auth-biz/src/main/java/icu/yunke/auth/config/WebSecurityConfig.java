@@ -24,6 +24,7 @@ public class WebSecurityConfig {
      * auth服务只需要提供登录方法和刷新token的方法即可，jwt过滤直接在gateway进行统一的安全过滤
      */
 
+    // TODO 使用spring security设置403、登陆失败等返回类
 
     /**
      * 密码加密

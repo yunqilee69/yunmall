@@ -8,8 +8,10 @@ import icu.yunke.framework.common.constants.UserConstant;
 import icu.yunke.framework.common.exception.auth.AuthError;
 import icu.yunke.framework.common.exception.auth.AuthException;
 import icu.yunke.framework.common.exception.base.JwtError;
+import icu.yunke.framework.common.model.dto.UserDTO;
 import icu.yunke.framework.common.util.JwtUtils;
 import icu.yunke.framework.redis.constant.UserRedisConstant;
+import icu.yunke.framework.security.convert.AuthConvert;
 import icu.yunke.framework.security.dto.AuthenticationUserDTO;
 import org.redisson.api.RedissonClient;
 import org.springframework.context.annotation.Lazy;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -46,10 +49,10 @@ public class AuthServiceImpl implements AuthService {
             throw new AuthException(AuthError.LOGIN_FAILED);
         }
         // 获取登录成功得到的用户数据，并存入redis缓存中
-        AuthenticationUserDTO userDTO = (AuthenticationUserDTO) authenticate.getPrincipal();
-        redissonClient.getBucket(UserRedisConstant.USER_KEY +userDTO.getUserId()).set(userDTO, 8L, TimeUnit.HOURS);
+        UserDTO userDTO = AuthConvert.INSTANCE.toUserDTO((AuthenticationUserDTO) authenticate.getPrincipal());
+        redissonClient.getBucket(UserRedisConstant.USER_KEY +userDTO.getId()).set(userDTO, 8L, TimeUnit.HOURS);
 
-        return createTokenAfterLoginSuccess(userDTO.getUserId());
+        return createTokenAfterLoginSuccess(userDTO.getId());
     }
 
     @Override
@@ -59,13 +62,10 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponse refreshToken(String refreshToken) {
-        if (JwtUtils.isTokenExpired(refreshToken)) {
-            throw new AuthException(JwtError.TOKEN_IS_EXPIRED);
-        }
         Long userId = JwtUtils.getUserid(refreshToken);
-        // 获取AuthenticationUserDTO
-        AuthenticationUserDTO userDTO = getAuthenticationUserDTOByUserId(userId);
-        redissonClient.getBucket(UserRedisConstant.USER_KEY +userDTO.getUserId()).set(userDTO, 8L, TimeUnit.HOURS);
+        // 获取UserDTO
+        UserDTO userDTO = AuthConvert.INSTANCE.toUserDTO(getAuthenticationUserDTOByUserId(userId));
+        redissonClient.getBucket(UserRedisConstant.USER_KEY +userDTO.getId()).set(userDTO, 8L, TimeUnit.HOURS);
 
         return createTokenAfterLoginSuccess(userId);
     }
