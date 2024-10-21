@@ -25,6 +25,10 @@
         <!-- 基础模块 -->
         <dependency>
             <groupId>icu.yunke</groupId>
+            <artifactId>yun-auth-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
             <artifactId>yun-common</artifactId>
         </dependency>
         <dependency>

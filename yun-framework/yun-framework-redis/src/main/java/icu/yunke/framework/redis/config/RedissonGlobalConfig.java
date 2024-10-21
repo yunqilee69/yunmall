@@ -19,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 public class RedissonGlobalConfig {
 
+    // TODO 需要改造，支持spring cache
+
     /**
      * 直接使用spring-data-redis提供的redis属性类即可
      */

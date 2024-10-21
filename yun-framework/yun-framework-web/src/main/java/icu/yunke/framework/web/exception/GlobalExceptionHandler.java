@@ -2,6 +2,7 @@ package icu.yunke.framework.web.exception;
 
 import icu.yunke.framework.common.exception.BaseException;
 import icu.yunke.framework.web.entity.ApiResponse;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,13 @@ import java.sql.SQLException;
 public class GlobalExceptionHandler {
 
     // TODO 补充异常日志输出，还未设计分布式日志系统
+
+    @ResponseBody
+    @ExceptionHandler(RuntimeException.class)
+    public ApiResponse<String> handleRuntimeException(RuntimeException e) {
+        e.printStackTrace();
+        return ApiResponse.failure("系统执行出错");
+    }
 
     /**
      * 统一捕获sql异常

@@ -5,7 +5,7 @@
 - nacos√
 - dubbo√
 - redisson:分布式锁及缓存√
-- spring doc：api文档及调试
+- spring doc：api文档及调试√
 - Rocketmq：消息队列框架
 
 

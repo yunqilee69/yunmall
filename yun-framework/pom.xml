@@ -18,6 +18,7 @@
 
     <modules>
         <module>yun-common</module>
+        <module>yun-framework-dubbo</module>
         <module>yun-framework-mybatis</module>
         <module>yun-framework-oss</module>
         <module>yun-framework-redis</module>
@@ -34,6 +35,11 @@
             <dependency>
                 <groupId>icu.yunke</groupId>
                 <artifactId>yun-common</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>icu.yunke</groupId>
+                <artifactId>yun-framework-dubbo</artifactId>
                 <version>${module.version}</version>
             </dependency>
             <dependency>

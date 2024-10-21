@@ -17,12 +17,16 @@
         <!-- 模块 -->
         <dependency>
             <groupId>icu.yunke</groupId>
+            <artifactId>yun-auth-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
             <artifactId>yun-common</artifactId>
         </dependency>
         <dependency>
             <groupId>icu.yunke</groupId>
             <artifactId>yun-framework-web</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>icu.yunke</groupId>
@@ -35,8 +39,13 @@
         </dependency>
         <!-- dubbo-->
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-dubbo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-security</artifactId>
         </dependency>
         <!-- nacos 服务发现 -->
         <dependency>

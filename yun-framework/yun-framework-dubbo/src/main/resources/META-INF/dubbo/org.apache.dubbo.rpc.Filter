@@ -1,0 +1,3 @@
+consumerFilter=icu.yunke.framework.dubbo.filter.ConsumerFilter
+providerFilter=icu.yunke.framework.dubbo.filter.ProviderFilter
+dubboExceptionFilter=icu.yunke.framework.dubbo.filter.DubboExceptionFilter
