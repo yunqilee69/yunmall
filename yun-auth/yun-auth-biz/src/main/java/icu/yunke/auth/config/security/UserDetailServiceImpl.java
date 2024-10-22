@@ -31,7 +31,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (StringUtils.isEmpty(username)) {
             throw new AuthException(AuthError.USERNAME_IS_EMPTY);
         }
-        AuthenticationUserDTO userDTO = authService.getAuthenticationUserDTOByUsername(username);
-        return userDTO;
+        return authService.getAuthenticationUserDTOByUsername(username);
     }
 }

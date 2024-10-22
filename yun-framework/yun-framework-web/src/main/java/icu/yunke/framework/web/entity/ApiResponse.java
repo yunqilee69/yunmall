@@ -1,6 +1,8 @@
 package icu.yunke.framework.web.entity;
 
 import icu.yunke.framework.common.constants.ResponseCode;
+import icu.yunke.framework.common.exception.BaseException;
+import icu.yunke.framework.common.exception.ErrorMessage;
 import lombok.Data;
 
 /**
@@ -45,5 +47,9 @@ public class ApiResponse<T> {
 
     public static <T> ApiResponse<T> failure(int code, String message) {
         return new ApiResponse<>(code, message, null);
+    }
+
+    public static <T> ApiResponse<T> failure(ErrorMessage e) {
+        return new ApiResponse<>(e.getCode(), e.getMessage(), null);
     }
 }

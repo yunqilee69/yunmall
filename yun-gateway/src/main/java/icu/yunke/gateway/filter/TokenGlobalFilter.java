@@ -51,8 +51,7 @@ public class TokenGlobalFilter implements GlobalFilter, Ordered {
         try {
             userId = JwtUtils.getUserid(token);
         } catch (BaseException e) {
-            // 解析失败
-            //  TODO 通过由微服务自己判断是否通过
+            // 解析失败 TODO 说明token出现问题，直接返回异常，结束
             return chain.filter(exchange);
         }
 

@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.annotation.Resource;
+
 /**
  * spring security配置类
  */
@@ -23,8 +25,6 @@ public class WebSecurityConfig {
      *
      * auth服务只需要提供登录方法和刷新token的方法即可，jwt过滤直接在gateway进行统一的安全过滤
      */
-
-    // TODO 使用spring security设置403、登陆失败等返回类
 
     /**
      * 密码加密
@@ -46,16 +46,16 @@ public class WebSecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll() // 登录路由
-                .and()
-                .logout(
-                        logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-                );
-        return http.build();
-    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/login").permitAll() // 登录路由
+//                .and()
+//                .logout(
+//                        logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+//                );
+//        return http.build();
+//    }
 
 }

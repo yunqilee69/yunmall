@@ -25,4 +25,10 @@ public class UserDTO {
     // 权限key
     private List<String>  perms;
 
+    // 是否启动：1->是,0->否
+    private Boolean enabled;
+
+    // 是否删除：1->是,0->否
+    private Boolean deleted;
+
 }

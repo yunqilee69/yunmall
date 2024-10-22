@@ -38,17 +38,6 @@ public class AuthController {
     }
 
     /**
-     * 登出
-     * @param userid
-     * @return
-     */
-    @GetMapping("/logout")
-    public ApiResponse<String> logout(Long userid) {
-        authService.logout(userid);
-        return ApiResponse.success("登出成功");
-    }
-
-    /**
      * 根据refreshToken重新生成token和refreshToken
      * @param refreshToken
      * @return
