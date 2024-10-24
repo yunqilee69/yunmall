@@ -36,6 +36,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>icu.yunke</groupId>
+            <artifactId>yun-framework-web</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

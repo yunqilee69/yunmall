@@ -49,8 +49,8 @@ public class User extends BaseEntity {
     /**
      * 是否启用
      */
-    @TableField("is_enable")
-    private Boolean enable ;
+    @TableField("is_enabled")
+    private Boolean enabled ;
 
     /**
      * 是否删除

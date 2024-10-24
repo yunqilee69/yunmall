@@ -51,4 +51,10 @@ public class YunAuthenticationFilter extends OncePerRequestFilter {
         // 结束前，需要清除当前线程的用户信息，防止出现OOM
         UserContextHolder.clear();
     }
+
+    @Override
+    protected boolean shouldNotFilterAsyncDispatch() {
+        // 返回true表示不对异步请求应用过滤器
+        return true;
+    }
 }

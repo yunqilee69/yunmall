@@ -14,9 +14,7 @@ public interface AuthConvert {
 
     AuthConvert INSTANCE = Mappers.getMapper(AuthConvert.class);
 
-    @Mapping(target = "id", source = "userId")
     UserDTO toUserDTO(AuthenticationUserDTO authenticationUserDTO);
 
-    @Mapping(target = "userId", source = "id")
     AuthenticationUserDTO toAuthenticationUserDTO(UserDTO userDTO);
 }

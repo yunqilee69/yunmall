@@ -29,7 +29,7 @@ create table tb_sys_role
     name       varchar(64) comment '名称',
     auth_key   varchar(64) comment '角色权限',
     remark     varchar(64) comment '备注',
-    is_enable  tinyint(1) comment '是否启用：1->启用，0->禁用',
+    is_enabled  tinyint(1) comment '是否启用：1->启用，0->禁用',
     is_deleted tinyint(1) comment '是否删除：1->删除，0->未删除'
 );
 

@@ -1,5 +1,6 @@
 package icu.yunke.framework.security.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import icu.yunke.framework.security.filter.YunAuthenticationFilter;
 import icu.yunke.framework.security.handler.YunAccessDeniedHandler;
 import icu.yunke.framework.security.handler.YunAuthenticationEntryPoint;
@@ -7,10 +8,13 @@ import icu.yunke.framework.security.handler.YunLogoutSuccessHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
